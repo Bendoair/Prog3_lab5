@@ -13,15 +13,15 @@ public class Consumer extends Thread{
 	
 	@Override
 	public void run() {
-		while(true) {
-			try {
-				System.out.println("Consumed: " + fifo.get());
-				Thread.sleep(sleeptimer*1000);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		
+		try {
+			System.out.println("Consumed: " + fifo.get());
+			Thread.sleep(sleeptimer*1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
 	}
 	
 }

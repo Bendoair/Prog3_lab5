@@ -1,6 +1,6 @@
 package Capitalism;
 
-public class Producer implements Runnable{
+public class Producer extends Thread{
 	Fifo fifo;
 	String szoveg;
 	int sleeptimer;
@@ -13,20 +13,19 @@ public class Producer implements Runnable{
 	
 	@Override
 	public void run(){
-		int i = 0;
-		while(true) {
+		
+		
 			
-			try {
-				fifo.put(szoveg + " " + i);
-				System.out.println("Produced: "+ szoveg + " " + i + " " + (System.currentTimeMillis()%100000));
-				i++;
-				Thread.sleep(sleeptimer*1000);
-				
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		try {
+			fifo.put(szoveg);
+			System.out.println("Produced: "+ szoveg + " "  + (System.currentTimeMillis()%100000));
+			Thread.sleep(sleeptimer*1000);
 			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		
+		
 	}
 }
